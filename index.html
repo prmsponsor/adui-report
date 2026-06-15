@@ -22,13 +22,13 @@ a{color:inherit;text-decoration:none}
 /* NAV */
 #nav{position:sticky;top:0;z-index:100;background:rgba(11,29,58,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px}
-.nav-brand{font-size:13px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;margin-right:auto;display:flex;align-items:center;gap:8px}
+.nav-brand{font-size:13px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;margin-right:auto;display:flex;align-items:center;gap:8px}.nav-brand-sep{width:1px;height:18px;background:rgba(255,255,255,.2);margin:0 4px}
 .nav-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;flex-shrink:0}
 .nav-links{display:flex;gap:0;list-style:none}
 .nav-links a{display:block;padding:0 14px;height:52px;line-height:52px;font-size:12px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s;white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-cta{margin-left:12px;background:var(--orange);color:#fff!important;border-radius:6px;padding:0 14px!important;height:34px!important;line-height:34px!important;font-weight:600!important;font-size:12px!important;transition:background .2s;align-self:center;flex-shrink:0}
-.nav-cta:hover{background:var(--orange2)!important}
+.nav-cta{margin-left:12px;background:#D41B2C;color:#fff!important;border-radius:6px;padding:0 14px!important;height:34px!important;line-height:34px!important;font-weight:600!important;font-size:12px!important;transition:background .2s;align-self:center;flex-shrink:0}
+.nav-cta:hover{background:#E8293A!important}
 @media(max-width:700px){.nav-links{display:none}}
 
 /* HERO */
@@ -40,8 +40,8 @@ a{color:inherit;text-decoration:none}
 .hero-title{font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-.5px}
 .hero-title em{font-style:normal;color:var(--orange)}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.7;margin-bottom:40px}
-.hero-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:32px}
-@media(max-width:800px){.hero-kpis{grid-template-columns:repeat(3,1fr)}}
+.hero-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:32px}
+@media(max-width:800px){.hero-kpis{grid-template-columns:repeat(3,1fr);gap:10px}}
 @media(max-width:480px){.hero-kpis{grid-template-columns:repeat(2,1fr)}}
 .kpi-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:16px 12px;text-align:center}
 .kpi-val{font-size:22px;font-weight:900;display:block;line-height:1;color:#fff}
@@ -180,7 +180,7 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
 
 <nav id="nav">
   <div class="nav-inner">
-    <div class="nav-brand"><div class="nav-dot"></div>ADUI Brake — SEO &amp; GEO 健檢報告</div>
+    <div class="nav-brand"><img src="data:image/png;base64,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" alt="普飛行銷" style="height:28px;width:auto;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1)"><span>ADUI Brake — SEO &amp; GEO 健檢報告</span></div>
     <ul class="nav-links">
       <li><a href="#metrics">核心指標</a></li>
       <li><a href="#trend">流量趨勢</a></li>
@@ -201,9 +201,9 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
       從峰值 <em>1,032</em> 次<br>
       跌至 <em>253</em> 次
     </h1>
-    <p class="hero-sub">9 個月內下滑 75.5%。同時，DR 只有 9 的競品 Galfer，流量是 ADUI 的 30 倍。本報告數據全部來自 Ahrefs API 直接查詢，提案由普飛行銷公司製作。</p>
+    <p class="hero-sub">9 個月內下滑 75.5%。同時，Galfer（流量頁面數是 ADUI 的 4.7 倍）流量達 ADUI 的 30 倍。本報告數據全部來自 Ahrefs API 直接查詢。</p><div style="display:inline-flex;align-items:center;gap:10px;background:rgba(212,27,44,.2);border:1px solid rgba(212,27,44,.4);border-radius:6px;padding:6px 14px;margin-bottom:8px"><span style="font-size:11px;color:rgba(255,255,255,.6)">提案單位</span><span style="font-size:11px;font-weight:700;color:#fff">普飛行銷公司 Perfect International</span><span style="font-size:10px;color:rgba(255,255,255,.4)">pufe.com.tw</span></div>
     <div class="hero-kpis">
-      <div class="kpi-card kpi-main"><span class="kpi-val" data-count="14">0</span><span class="kpi-lbl">Domain Rating</span></div>
+      
       <div class="kpi-card kpi-alert"><span class="kpi-val" data-count="315">0</span><span class="kpi-lbl">月自然流量</span></div>
       <div class="kpi-card"><span class="kpi-val" data-count="47">0</span><span class="kpi-lbl">自然關鍵字</span></div>
       <div class="kpi-card"><span class="kpi-val" data-count="120">0</span><span class="kpi-lbl">引用網域數</span></div>
@@ -217,15 +217,15 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
   <div class="section-inner">
     <div class="section-hd reveal">
       <div><div class="ch-num">Chapter 01</div><div class="section-title">SEO 核心指標</div></div>
-      <div class="section-src">site-explorer-metrics · site-explorer-backlinks-stats · site-explorer-domain-rating</div>
+      <div class="section-src">Ahrefs</div>
     </div>
     <div class="metric-grid reveal">
-      <div class="metric-c"><span class="m-val">14</span><span class="m-lbl">Domain Rating</span><span class="m-src">domain-rating API</span></div>
-      <div class="metric-c alert"><span class="m-val" style="color:var(--red)">315</span><span class="m-lbl">月自然流量</span><span class="m-src">site-explorer-metrics</span></div>
-      <div class="metric-c"><span class="m-val">47</span><span class="m-lbl">自然關鍵字總數</span><span class="m-src">site-explorer-metrics</span></div>
-      <div class="metric-c good"><span class="m-val" style="color:var(--green)">14</span><span class="m-lbl">Top 1–3 排名詞</span><span class="m-src">site-explorer-metrics</span></div>
-      <div class="metric-c"><span class="m-val">521</span><span class="m-lbl">活躍外部連結</span><span class="m-src">backlinks-stats</span></div>
-      <div class="metric-c"><span class="m-val">120</span><span class="m-lbl">引用網域（活躍）</span><span class="m-src">backlinks-stats</span></div>
+      
+      <div class="metric-c alert"><span class="m-val" style="color:var(--red)">315</span><span class="m-lbl">月自然流量</span></div>
+      <div class="metric-c"><span class="m-val">47</span><span class="m-lbl">自然關鍵字總數</span></div>
+      <div class="metric-c good"><span class="m-val" style="color:var(--green)">14</span><span class="m-lbl">Top 1–3 排名詞</span></div>
+      <div class="metric-c"><span class="m-val">521</span><span class="m-lbl">活躍外部連結</span></div>
+      <div class="metric-c"><span class="m-val">120</span><span class="m-lbl">引用網域（活躍）</span></div>
     </div>
   </div>
 </section>
@@ -234,7 +234,7 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
   <div class="section-inner">
     <div class="section-hd reveal">
       <div><div class="ch-num">Chapter 02</div><div class="section-title">流量歷史趨勢 <span style="font-size:14px;font-weight:500;color:var(--red)">⚠ 銳減警示</span></div></div>
-      <div class="section-src">site-explorer-metrics-history · 2024-01 至 2026-05</div>
+      <div class="section-src">Ahrefs</div>
     </div>
     <div class="callout callout-red reveal"><strong>流量銳減警示：</strong>自然流量於 2025 年 8 月達峰值 <strong>1,032 次/月</strong>，2026 年 5 月降至 <strong>253 次/月</strong>，9 個月內下滑 <strong>75.5%</strong>。</div>
     <div class="chart-container reveal"><canvas id="trafficChart" style="width:100%;height:200px"></canvas></div>
@@ -258,9 +258,9 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
   <div class="section-inner">
     <div class="section-hd reveal">
       <div><div class="ch-num">Chapter 03</div><div class="section-title">關鍵字排名分析</div></div>
-      <div class="section-src">site-explorer-organic-keywords · 2026-06-13 · top 20</div>
+      <div class="section-src">Ahrefs</div>
     </div>
-    <div class="callout callout-warn reveal"><strong>關鍵發現：</strong>「來令片」月搜尋量 2,300，ADUI 目前排名 #11（第二頁）。排名提升至 #1–3 可使流量增加 10–20 倍。全部 47 個關鍵字 KD 均為 0–2，流量結構極脆弱。</div>
+    <div class="callout callout-warn reveal"><strong>關鍵發現：</strong>「來令片」月搜尋量 2,300，ADUI 目前排名 #11（第二頁），每月帶來 36 次流量。若排名提升至 #1–3，流量可增加 10–20 倍。英文頁面最高搜尋量詞「nao brake pads」（150/月）、「surface grooves in brake pads indicate」（150/月）雖有穩定排名，但搜尋量相對有限，英文採購型關鍵字幾乎缺席。</div>
     <div class="tbl-wrap reveal">
       <table>
         <thead><tr><th>關鍵字</th><th>語言</th><th>排名</th><th>月搜尋量</th><th>流量貢獻</th><th>KD</th></tr></thead>
@@ -290,7 +290,7 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
     </div>
     <div class="section-hd reveal" style="margin-top:40px">
       <div><div class="ch-num">Chapter 04</div><div class="section-title">Top Pages 流量結構</div></div>
-      <div class="section-src">site-explorer-top-pages · 2026-06-13</div>
+      <div class="section-src">Ahrefs</div>
     </div>
     <div class="tbl-wrap reveal">
       <table>
@@ -312,23 +312,51 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
 <section id="ai" class="section">
   <div class="section-inner">
     <div class="section-hd reveal">
-      <div><div class="ch-num">Chapter 05</div><div class="section-title">AI 引用現況</div></div>
-      <div class="section-src">Ahrefs 概述頁截圖 · 2026-05-18</div>
+      <div><div class="ch-num">Chapter 05</div><div class="section-title">AI 引用現況 — 與競品比較</div></div>
+      <div class="section-src">Ahrefs</div>
     </div>
-    <div class="callout callout-gray reveal">所有數值標示「+N」代表新索引功能首次記錄，基準值為 0。</div>
-    <div class="ai-grid reveal">
-      <div class="ai-card"><span class="ai-num" style="color:var(--blue)">5</span><span class="ai-lbl">AI Overviews</span><span class="ai-pg">3 頁面</span></div>
-      <div class="ai-card"><span class="ai-num">5</span><span class="ai-lbl">AI 模式</span><span class="ai-pg">4 頁面</span></div>
-      <div class="ai-card top"><span class="ai-top-badge">最高</span><span class="ai-num" style="color:var(--green)">7</span><span class="ai-lbl">Grok</span><span class="ai-pg">5 頁面</span></div>
-      <div class="ai-card"><span class="ai-num">4</span><span class="ai-lbl">ChatGPT</span><span class="ai-pg">3 頁面</span></div>
-      <div class="ai-card"><span class="ai-num">3</span><span class="ai-lbl">Perplexity</span><span class="ai-pg">3 頁面</span></div>
-      <div class="ai-card"><span class="ai-num">1</span><span class="ai-lbl">Gemini</span><span class="ai-pg">1 頁面</span></div>
-      <div class="ai-card zero"><span class="ai-num" style="color:var(--red)">0</span><span class="ai-lbl">Copilot</span><span class="ai-pg">缺席</span></div>
+    <div class="callout callout-gray reveal">數據來源：Ahrefs 概述頁「AI 提供的引用鏈接」截圖。所有數值標示「+N」代表新索引功能首次記錄，基準值為 0。</div>
+
+    <!-- AI Comparison Overview -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px" class="reveal">
+      <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:var(--radius);padding:20px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">ADUI Brake（本站）</div>
+        <div style="font-size:40px;font-weight:900;color:var(--blue);line-height:1">30</div>
+        <div style="font-size:11px;color:var(--ink2);margin-top:4px">AI 引用合計（8 平台）</div>
+      </div>
+      <div style="background:#FFF1F2;border:1.5px solid #FCA5A5;border-radius:var(--radius);padding:20px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">EBC Brakes（競品）</div>
+        <div style="font-size:40px;font-weight:900;color:var(--red);line-height:1">559</div>
+        <div style="font-size:11px;color:var(--ink2);margin-top:4px">AI 引用合計（8 平台）<br><strong style="color:var(--red)">ADUI 的 18.6 倍</strong></div>
+      </div>
+      <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:var(--radius);padding:20px;text-align:center">
+        <div style="font-size:10px;font-weight:700;color:var(--warn);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Galfer（競品）</div>
+        <div style="font-size:40px;font-weight:900;color:var(--warn);line-height:1">80</div>
+        <div style="font-size:11px;color:var(--ink2);margin-top:4px">AI 引用合計（8 平台）<br><strong style="color:var(--warn)">ADUI 的 2.7 倍</strong></div>
+      </div>
     </div>
-    <div class="callout callout-blue reveal" style="margin-top:16px">六平台合計 <strong>25 次引用</strong>。Grok 引用量最高（7 次），Copilot 完全缺席，是合作方案的優化目標之一。</div>
+
+    <!-- Platform breakdown comparison table -->
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>AI 平台</th><th>ADUI（引用 / 頁面）</th><th>EBC Brakes（引用 / 頁面）</th><th>Galfer（引用 / 頁面）</th></tr></thead>
+        <tbody>
+          <tr><td>AI Overviews</td><td>5 / 3</td><td>63 / 35</td><td>15 / 13</td></tr>
+          <tr><td>AI 模式（Google AI Mode）</td><td>5 / 4</td><td>75 / 48</td><td>18 / 14</td></tr>
+          <tr><td>Grok</td><td>7 / 5</td><td class="red">149 / 59</td><td>19 / 29</td></tr>
+          <tr><td>AIO（搜尋查詢）</td><td>5 / 5</td><td class="red">148 / 47</td><td>2 / 2</td></tr>
+          <tr><td>ChatGPT</td><td>4 / 3</td><td>41 / 47</td><td>11 / 20</td></tr>
+          <tr><td>Perplexity</td><td>3 / 3</td><td>43 / 22</td><td>5 / 5</td></tr>
+          <tr><td>Gemini</td><td>1 / 1</td><td>23 / 20</td><td>3 / 3</td></tr>
+          <tr><td>Copilot</td><td>0 / 0</td><td>17 / 9</td><td>7 / 10</td></tr>
+          <tr style="background:#F0F4F8"><td><strong>合計</strong></td><td class="blue"><strong>30</strong></td><td class="red"><strong>559</strong></td><td class="warn"><strong>80</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-blue reveal">整體 AI 引用規模：ADUI 目前為 30 次，Galfer（DR 低於 ADUI）已達 80 次、EBC Brakes 559 次。差距主要來自內容規模與關鍵字覆蓋廣度，而非特定平台的技術優化。提升內容覆蓋是縮短 AI 引用差距的根本路徑。</div>
     <div class="section-hd reveal" style="margin-top:40px">
       <div><div class="ch-num">Chapter 06</div><div class="section-title">外鏈品質分析</div></div>
-      <div class="section-src">site-explorer-backlinks-stats<br>site-explorer-referring-domains</div>
+      <div class="section-src">Ahrefs</div>
     </div>
     <div class="tbl-wrap reveal">
       <table>
@@ -352,19 +380,53 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
   <div class="section-inner">
     <div class="section-hd reveal">
       <div><div class="ch-num">Chapter 07</div><div class="section-title">競品 SEO 差距對比</div></div>
-      <div class="section-src">site-explorer-metrics · domain-rating · 各獨立查詢</div>
+      <div class="section-src">Ahrefs</div>
     </div>
-    <div class="callout callout-warn reveal"><strong>Galfer 悖論：</strong>Galfer DR 僅 9，低於 ADUI DR 14，但流量是 ADUI 的 30 倍（9,397 vs 315）。流量差距不是域名權威問題，而是關鍵字策略問題。</div>
-    <div class="comp-grid reveal">
-      <div class="comp-card"><div class="comp-domain">ebcbrakes.com</div><div class="comp-brand">EBC Brakes</div><div class="comp-dr">DR 67</div><span class="comp-traffic">36,192</span><span class="comp-ratio">115x ADUI</span></div>
-      <div class="comp-card"><div class="comp-domain">jagwire.com</div><div class="comp-brand">Jagwire</div><div class="comp-dr">DR 43</div><span class="comp-traffic">9,204</span><span class="comp-ratio">29x ADUI</span></div>
-      <div class="comp-card paradox"><div class="paradox-tag">DR 比 ADUI 低</div><div class="comp-domain">galfer.com</div><div class="comp-brand">Galfer</div><div class="comp-dr" style="background:#FEF3C7;color:#D97706">DR 9 ⬇</div><span class="comp-traffic">9,397</span><span class="comp-ratio">30x ADUI</span></div>
-      <div class="comp-card"><div class="comp-domain">swissstop.com</div><div class="comp-brand">SwissStop</div><div class="comp-dr">DR 31</div><span class="comp-traffic" style="color:var(--warn)">406</span><span class="comp-ratio neutral">1.3x ADUI</span></div>
-      <div class="comp-card highlight"><div class="comp-domain">aduibrake.com</div><div class="comp-brand" style="color:var(--blue)">ADUI（受檢）</div><div class="comp-dr" style="background:#DBEAFE;color:var(--blue)">DR 14</div><span class="comp-traffic me">315</span><span class="comp-ratio" style="color:var(--blue)">基準</span></div>
+    <div class="callout callout-warn reveal"><strong>關鍵發現：</strong>Galfer 月流量是 ADUI 的 30 倍（9,397 vs 315），流量頁面數也是 ADUI 的 4.7 倍（103 vs 22）。差距根源不在技術層面，Ahrefs 內容差距分析（美國市場）顯示：Galfer 有排名但 ADUI 完全缺席的關鍵字共 <strong>37 個</strong>，合計月搜尋量 <strong>11,120 次</strong>，這正是 ADUI 的內容填補機會。</div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>品牌</th><th>月自然流量</th><th>自然關鍵字</th><th>Top 1–3 排名詞</th><th>流量頁面數</th><th>vs ADUI 流量倍差</th></tr></thead>
+        <tbody>
+          <tr><td><strong>EBC Brakes</strong><span class="sub">ebcbrakes.com</span></td><td class="red">36,192</td><td>1,513</td><td>446</td><td>178</td><td class="red">115x</td></tr>
+          <tr><td><strong>Jagwire</strong><span class="sub">jagwire.com</span></td><td class="red">9,204</td><td>108</td><td>42</td><td>62</td><td class="red">29x</td></tr>
+          <tr style="background:#FFFBEB"><td><strong>Galfer</strong><span class="sub">galfer.com — 自然流量 30 倍，但月搜尋量更高的詞完全未觸及</span></td><td class="red">9,397</td><td>136</td><td>72</td><td>103</td><td class="red">30x</td></tr>
+          <tr><td><strong>SwissStop</strong><span class="sub">swissstop.com</span></td><td class="warn">406</td><td>22</td><td>10</td><td>26</td><td class="warn">1.3x</td></tr>
+          <tr style="background:#EFF6FF"><td style="color:var(--blue);font-weight:700">ADUI（本站）<span class="sub">aduibrake.com</span></td><td class="blue">315</td><td class="blue">47</td><td class="blue">14</td><td class="blue">22</td><td class="gray">基準</td></tr>
+        </tbody>
+      </table>
     </div>
+
+    <!-- Content Gap Analysis -->
+    <div class="section-hd reveal" style="margin-top:40px">
+      <div><div class="ch-num" style="color:var(--orange)">Content Gap</div><div class="section-title">與 Galfer 的內容差距機會（美國市場）</div></div>
+      <div class="section-src">Ahrefs</div>
+    </div>
+    <div class="callout callout-gray reveal">數據來源：Ahrefs 內容差距分析報表，美國市場，排除 Galfer 品牌關鍵字，共 37 個 Galfer 有排名但 ADUI 完全缺席的關鍵字，合計月搜尋量 11,120 次。</div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>#</th><th>缺口關鍵字</th><th>月搜尋量</th><th>Galfer 排名</th><th>ADUI 排名</th><th>類型</th></tr></thead>
+        <tbody>
+          <tr style="background:#FFF1F2"><td>1</td><td><strong>break pad</strong></td><td class="red">2,200</td><td>#11</td><td class="red">未排名</td><td>產品類</td></tr>
+          <tr style="background:#FFF1F2"><td>2</td><td><strong>discos de freno</strong><span class="sub">西班牙文市場</span></td><td class="red">2,000</td><td>#14</td><td class="red">未排名</td><td>產品類</td></tr>
+          <tr style="background:#FFF1F2"><td>3</td><td><strong>brake disc</strong></td><td class="red">1,800</td><td>#21</td><td class="red">未排名</td><td>產品類</td></tr>
+          <tr style="background:#FFF1F2"><td>4</td><td><strong>bicycle brake pads</strong></td><td class="red">1,400</td><td>#14</td><td class="red">未排名</td><td>自行車類</td></tr>
+          <tr><td>5</td><td>disc brakes bike</td><td class="warn">900</td><td>#3</td><td class="red">未排名</td><td>自行車類</td></tr>
+          <tr><td>6</td><td>brake discs</td><td class="warn">800</td><td>#23</td><td class="red">未排名</td><td>產品類</td></tr>
+          <tr><td>7</td><td>sintered brake pads</td><td class="warn">600</td><td>#39</td><td class="red">未排名</td><td>材質類</td></tr>
+          <tr><td>8</td><td>e bike brake pads</td><td>300</td><td>#1</td><td class="red">未排名</td><td>E-Bike 類</td></tr>
+          <tr><td>9</td><td>organic vs sintered brake pads</td><td>70</td><td>#8</td><td class="red">未排名</td><td>比較類</td></tr>
+          <tr><td>10</td><td>sintered vs ceramic brake pads</td><td>50</td><td>#3</td><td class="red">未排名</td><td>比較類</td></tr>
+          <tr style="background:#F0FDF4"><td colspan="6" style="padding:8px 14px;font-size:11px;color:#16A34A">
+            <strong>37 個缺口關鍵字合計月搜尋量：11,120 次</strong>　｜　搜尋量 1,000+ 的關鍵字：4 個（brake disc / bicycle brake pads / break pad / discos de freno）
+            ｜ E-Bike 類（e bike brake pads 300/月）：ADUI 有 E-Cargo 專屬配方的技術優勢，卻完全未出現在此搜尋詞
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-hd reveal" style="margin-top:40px">
       <div><div class="ch-num">Chapter 08</div><div class="section-title">地理市場分析</div></div>
-      <div class="section-src">organic-keywords（country=TW/US）<br>+ Top Pages 語言分布</div>
+      <div class="section-src">Ahrefs</div>
     </div>
     <div class="geo-split reveal">
       <div class="geo-card geo-tw"><span class="geo-pct">72%</span><span class="geo-name">台灣市場（繁體中文）</span><div class="geo-detail">Top Pages 繁中頁面合計：<strong>226 次/月</strong><br>主要來自台灣本地品牌搜尋（亞得利、來令片等）<br>country=TW 查詢確認</div></div>
@@ -374,11 +436,11 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
   </div>
 </section>
 
-<section id="proposal" class="section" style="background:var(--navy)">
+<section id="proposal" class="section" style="background:#1a1a2e">
   <div class="section-inner">
     <div class="section-hd reveal" style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px;margin-bottom:32px">
-      <div><div class="ch-num" style="color:var(--orange)">Chapter 09</div><div class="section-title" style="color:#fff">12 個月合作方案</div></div>
-      <div class="section-src" style="color:rgba(255,255,255,.4)">定價另行洽詢<br>Ahrefs 指標為唯一驗收基準</div>
+      <div><div class="ch-num" style="color:#D41B2C">Chapter 09</div><div class="section-title" style="color:#fff">12 個月合作方案</div></div>
+      <div class="section-src" style="color:rgba(255,255,255,.4)">定價另行洽詢<br></div>
     </div>
     <div class="pkg-grid reveal">
       <div class="pkg-card">
@@ -413,8 +475,8 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
         <div class="pkg-items">
           <div class="pkg-item"><span>方案 B 全部服務</span></div>
           <div class="pkg-item"><span>數位 PR 計畫<span class="pkg-note">媒體露出方案，含自行車產業媒體觸及</span></span></div>
-          <div class="pkg-item"><span>外鏈建置<span class="pkg-note">目標引用網域 120 → 180+（Ahrefs 可驗證）</span></span></div>
-          <div class="pkg-item"><span>Copilot AI 引用缺席補強</span></div>
+          <div class="pkg-item"><span>外鏈加強<span class="pkg-note">外部連結品質與來源多元化強化</span></span></div>
+          <div class="pkg-item"><span>AI引用推薦加強</span></div>
           <div class="pkg-item"><span>半年期中 Ahrefs 複檢 + 策略調整</span></div>
           <div class="pkg-item"><span>期末 KPI 驗收報告</span></div>
         </div>
@@ -425,12 +487,12 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
       <div class="roadmap reveal">
         <div class="rm-step"><div class="rm-phase" style="background:var(--red)">M1–M2<br>診斷修復</div><div class="rm-body"><h4>流量銳減根因診斷 + SEO 技術底座</h4><p>GSC 比對找出失去排名頁面 · 「來令片」#11 提升計畫 · FAQPage / Organization Schema</p></div></div>
         <div class="rm-step"><div class="rm-phase" style="background:var(--orange)">M3–M5<br>英文拓展</div><div class="rm-body"><h4>英文市場關鍵字佈局 + Pillar 頁</h4><p>Pillar 頁 × 2 · Cluster Blog 月產 2 篇 · bike brake pads（2,500/月）/ disc brake pads（1,500/月）</p></div></div>
-        <div class="rm-step"><div class="rm-phase" style="background:var(--blue)">M6–M8<br>品牌 PR</div><div class="rm-body"><h4>數位 PR + AI 引用強化</h4><p>數位 PR 計畫（含自行車產業媒體觸及）· Copilot AI 引用補強 · 期中 Ahrefs 複檢</p></div></div>
+        <div class="rm-step"><div class="rm-phase" style="background:#D41B2C">M6–M8<br>品牌 PR</div><div class="rm-body"><h4>數位 PR + AI 引用強化</h4><p>數位 PR 計畫（含自行車產業媒體觸及）· Copilot AI 引用補強 · 期中 Ahrefs 複檢</p></div></div>
         <div class="rm-step"><div class="rm-phase" style="background:var(--green)">M9–M12<br>鞏固驗收</div><div class="rm-body"><h4>規模化 + KPI 驗收</h4><p>Cluster Blog 持續月產 2 篇 · 第二波 PR · 期末 Ahrefs 完整指標比對</p></div></div>
       </div>
     </div>
     <div style="margin-top:40px" class="reveal">
-      <div class="ch-num" style="color:var(--orange);margin-bottom:12px">12 個月 KPI 目標（Ahrefs 指標唯一驗收基準）</div>
+      <div class="ch-num" style="color:var(--orange);margin-bottom:12px">12 個月 KPI 目標</div>
       <div style="border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.1)">
         <table>
           <thead><tr><th>Ahrefs 指標</th><th>M1 基線</th><th>M6 中期</th><th>M12 期末</th></tr></thead>
@@ -438,9 +500,9 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
             <tr><td>月自然流量</td><td class="red">315</td><td>600+</td><td class="green">1,500+</td></tr>
             <tr><td>自然關鍵字</td><td class="red">47</td><td>120+</td><td class="green">300+</td></tr>
             <tr><td>Top 1–3 關鍵字</td><td>14</td><td>30+</td><td class="green">60+</td></tr>
-            <tr><td>引用網域數</td><td>120</td><td>140+</td><td class="green">180+</td></tr>
+            
             <tr><td>AI 引用合計</td><td>25</td><td>50+</td><td class="green">100+</td></tr>
-            <tr><td>Domain Rating</td><td>14</td><td>18+</td><td class="green">25+</td></tr>
+            
           </tbody>
         </table>
       </div>
@@ -449,7 +511,7 @@ tr:hover td{background:#EEF3FA;transition:background .15s}
 </section>
 
 <footer id="footer">
-  <div class="footer-logo">PI</div>
+  <div style="margin-bottom:10px"><img src="data:image/png;base64,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" alt="普飛行銷" style="height:32px;width:auto;vertical-align:middle;margin-bottom:12px"></div>
   <div><strong>普飛行銷公司 Perfect International</strong></div>
   <div style="margin-top:6px">pufe.com.tw · 提案日期：2026 年 06 月 13 日 · 受檢網域：aduibrake.com</div>
   <div style="margin-top:4px;font-size:11px;opacity:.5">本報告數據全部來自 Ahrefs API 直接查詢，版權歸普飛行銷公司所有，僅供 ADUI Brake 參考。</div>
