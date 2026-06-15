@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ADUI Brake — SEO & GEO 健檢報告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0B1D3A;--navy2:#132847;--orange:#F05D1E;--orange2:#FF7A3D;
+  --blue:#2563EB;--teal:#0EA5E9;--red:#EF4444;--green:#10B981;--warn:#F59E0B;
+  --ink:#1E293B;--ink2:#475569;--ink3:#94A3B8;
+  --bg:#F0F4F8;--bg2:#E8EDF3;--card:#FFFFFF;--border:#E2E8F0;
+  --radius:10px;--shadow:0 2px 12px rgba(11,29,58,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+#nav{position:sticky;top:0;z-index:100;background:rgba(11,29,58,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px}
+.nav-brand{font-size:13px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;margin-right:auto;display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;flex-shrink:0}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{display:block;padding:0 14px;height:52px;line-height:52px;font-size:12px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{margin-left:12px;background:var(--orange);color:#fff!important;border-radius:6px;padding:0 14px!important;height:34px!important;line-height:34px!important;font-weight:600!important;font-size:12px!important;transition:background .2s;align-self:center;flex-shrink:0}
+.nav-cta:hover{background:var(--orange2)!important}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* HERO */
+#hero{background:linear-gradient(145deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:72px 24px 64px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 70% 50%,rgba(240,93,30,.12),transparent);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:24px}
+.hero-eyebrow span{color:var(--orange)}
+.hero-title{font-size:clamp(26px,4vw,46px);font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-.5px}
+.hero-title em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.7;margin-bottom:40px}
+.hero-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:32px}
+@media(max-width:800px){.hero-kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.hero-kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:16px 12px;text-align:center}
+.kpi-val{font-size:22px;font-weight:900;display:block;line-height:1;color:#fff}
+.kpi-lbl{font-size:10px;color:rgba(255,255,255,.45);display:block;margin-top:5px;line-height:1.3}
+.kpi-alert .kpi-val{color:#FF6B6B}
+.kpi-warn .kpi-val{color:#FFC65C}
+.kpi-good .kpi-val{color:#4ADE80}
+.kpi-main .kpi-val{color:var(--orange)}
+
+/* SECTION */
+.section{padding:64px 24px}
+.section-alt{background:#fff}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;gap:16px}
+@media(max-width:600px){.section-hd{flex-direction:column;align-items:flex-start}}
+.ch-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.section-title{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
+.section-src{font-size:11px;color:var(--ink3);text-align:right;line-height:1.5;flex-shrink:0}
+
+/* METRICS */
+.metric-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+@media(max-width:900px){.metric-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.metric-grid{grid-template-columns:repeat(2,1fr)}}
+.metric-c{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 14px;text-align:center;box-shadow:var(--shadow)}
+.metric-c.alert{border-color:#FCA5A5;background:#FFF1F2}
+.metric-c.good{border-color:#86EFAC;background:#F0FDF4}
+.m-val{font-size:26px;font-weight:900;color:var(--navy);display:block;line-height:1}
+.m-lbl{font-size:11px;color:var(--ink2);display:block;margin-top:5px;line-height:1.3}
+.m-src{font-size:9px;color:var(--ink3);display:block;margin-top:3px}
+
+/* CALLOUTS */
+.callout{border-radius:var(--radius);padding:14px 16px;font-size:13px;line-height:1.6;margin-bottom:16px;border:1px solid}
+.callout-red{background:#FFF1F2;border-color:#FCA5A5;border-left:4px solid var(--red)}
+.callout-warn{background:#FFFBEB;border-color:#FDE68A;border-left:4px solid var(--warn)}
+.callout-blue{background:#EFF6FF;border-color:#BFDBFE;border-left:4px solid var(--blue)}
+.callout-gray{background:var(--bg);border-color:var(--border);font-size:11px;color:var(--ink2)}
+
+/* TABLES */
+.tbl-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:11.5px;white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--bg2);vertical-align:middle;color:var(--ink)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+tr:hover td{background:#EEF3FA;transition:background .15s}
+.num{font-weight:700}
+.red{color:var(--red);font-weight:700}
+.green{color:var(--green);font-weight:700}
+.warn{color:var(--warn);font-weight:700}
+.blue{color:var(--blue);font-weight:700}
+.gray{color:var(--ink3)}
+.sub{font-size:10.5px;color:var(--ink3);display:block;margin-top:1px}
+.b{border-radius:4px;padding:2px 8px;font-size:10.5px;font-weight:700;display:inline-block;border:1px solid;white-space:nowrap}
+.b-tw{background:#FFF7ED;color:#C2410C;border-color:#FDBA74;font-size:10px}
+.b-en{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;font-size:10px}
+.b-g{background:#DCFCE7;color:#16A34A;border-color:#86EFAC}
+.b-r{background:#FEE2E2;color:#DC2626;border-color:#FCA5A5}
+.b-w{background:#FEF3C7;color:#D97706;border-color:#FCD34D}
+
+/* CHART */
+.chart-container{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:16px}
+
+/* AI GRID */
+.ai-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+@media(max-width:700px){.ai-grid{grid-template-columns:repeat(3,1fr)}}
+.ai-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 10px;text-align:center;box-shadow:var(--shadow);transition:transform .2s}
+.ai-card:hover{transform:translateY(-2px)}
+.ai-card.top{border-color:#86EFAC;background:#F0FDF4}
+.ai-card.zero{border-color:#FCA5A5;background:#FFF1F2}
+.ai-num{font-size:28px;font-weight:900;display:block;line-height:1;color:var(--navy)}
+.ai-top-badge{font-size:9px;background:var(--green);color:#fff;border-radius:3px;padding:1px 5px;display:inline-block;margin-bottom:2px}
+.ai-lbl{font-size:10px;color:var(--ink2);display:block;margin-top:4px;font-weight:500}
+.ai-pg{font-size:9.5px;color:var(--ink3);margin-top:2px;display:block}
+
+/* COMPETITORS */
+.comp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:700px){.comp-grid{grid-template-columns:repeat(2,1fr)}}
+.comp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 14px;text-align:center;box-shadow:var(--shadow);position:relative}
+.comp-card.highlight{border-color:var(--blue);background:#EFF6FF}
+.comp-card.paradox{border-color:var(--warn);background:#FFFBEB}
+.paradox-tag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--warn);color:#fff;font-size:9px;font-weight:700;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.comp-domain{font-size:10px;color:var(--ink3);margin-bottom:5px}
+.comp-brand{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.comp-dr{font-size:11px;font-weight:600;background:var(--bg2);border-radius:4px;padding:2px 8px;display:inline-block;margin-bottom:8px}
+.comp-traffic{font-size:22px;font-weight:900;color:var(--red);display:block;line-height:1}
+.comp-traffic.me{color:var(--blue)}
+.comp-ratio{font-size:11px;font-weight:700;color:var(--red);margin-top:4px;display:block}
+.comp-ratio.neutral{color:var(--warn)}
+
+/* GEO */
+.geo-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.geo-split{grid-template-columns:1fr}}
+.geo-card{border-radius:var(--radius);padding:24px;border:1.5px solid}
+.geo-tw{background:#FFFBEB;border-color:#FCD34D}
+.geo-en{background:#EFF6FF;border-color:#BFDBFE}
+.geo-pct{font-size:40px;font-weight:900;display:block;line-height:1;margin-bottom:6px}
+.geo-tw .geo-pct{color:#D97706}
+.geo-en .geo-pct{color:var(--blue)}
+.geo-name{font-size:13px;font-weight:700;margin-bottom:10px;display:block}
+.geo-detail{font-size:11.5px;color:var(--ink2);line-height:1.8}
+
+/* PACKAGES */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.pkg-grid{grid-template-columns:1fr}}
+.pkg-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+.pkg-card.rec{border-color:var(--blue)}
+.pkg-rec-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 14px;border-radius:10px;white-space:nowrap}
+.pkg-tag{display:inline-block;background:var(--bg2);color:var(--ink2);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:10px}
+.pkg-tag.rec{background:#DBEAFE;color:var(--blue)}
+.pkg-name{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.pkg-desc{font-size:12px;color:var(--ink3);margin-bottom:16px;line-height:1.5}
+.pkg-items{font-size:12px;color:var(--ink);line-height:2;flex:1}
+.pkg-item{display:flex;gap:7px;align-items:flex-start;line-height:1.6;margin-bottom:4px}
+.pkg-item::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.pkg-note{font-size:10.5px;color:var(--ink3);margin-top:2px;display:block;line-height:1.4}
+
+/* ROADMAP */
+.roadmap{display:flex;flex-direction:column;gap:10px}
+.rm-step{display:grid;grid-template-columns:80px 1fr;gap:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.rm-phase{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;color:#fff;font-size:11px;font-weight:700;text-align:center;line-height:1.3}
+.rm-body{background:var(--card);border:1px solid var(--border);border-left:none;padding:14px 18px}
+.rm-body h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.rm-body p{font-size:11.5px;color:var(--ink2);line-height:1.6}
+
+/* FOOTER */
+#footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:32px 24px;font-size:12px}
+#footer strong{color:#fff}
+.footer-logo{display:inline-block;background:var(--blue);color:#fff;font-weight:900;font-size:14px;padding:4px 14px;border-radius:5px;margin-bottom:12px;letter-spacing:1px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><div class="nav-dot"></div>ADUI Brake — SEO &amp; GEO 健檢報告</div>
+    <ul class="nav-links">
+      <li><a href="#metrics">核心指標</a></li>
+      <li><a href="#trend">流量趨勢</a></li>
+      <li><a href="#keywords">關鍵字</a></li>
+      <li><a href="#ai">AI 引用</a></li>
+      <li><a href="#competitors">競品</a></li>
+      <li><a href="#proposal">合作方案</a></li>
+      <li><a href="#proposal" class="nav-cta">立即洽詢</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>⚠</span> AHREFS DATA REPORT · 2026-06-13</div>
+    <h1 class="hero-title">
+      ADUI 的官網流量<br>
+      從峰值 <em>1,032</em> 次<br>
+      跌至 <em>253</em> 次
+    </h1>
+    <p class="hero-sub">9 個月內下滑 75.5%。同時，DR 只有 9 的競品 Galfer，流量是 ADUI 的 30 倍。本報告數據全部來自 Ahrefs API 直接查詢，提案由普飛行銷公司製作。</p>
+    <div class="hero-kpis">
+      <div class="kpi-card kpi-main"><span class="kpi-val" data-count="14">0</span><span class="kpi-lbl">Domain Rating</span></div>
+      <div class="kpi-card kpi-alert"><span class="kpi-val" data-count="315">0</span><span class="kpi-lbl">月自然流量</span></div>
+      <div class="kpi-card"><span class="kpi-val" data-count="47">0</span><span class="kpi-lbl">自然關鍵字</span></div>
+      <div class="kpi-card"><span class="kpi-val" data-count="120">0</span><span class="kpi-lbl">引用網域數</span></div>
+      <div class="kpi-card kpi-warn"><span class="kpi-val">75.5%↓</span><span class="kpi-lbl">流量自峰值下滑</span></div>
+      <div class="kpi-card kpi-good"><span class="kpi-val" data-count="25">0</span><span class="kpi-lbl">AI 平台引用次</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metrics" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <div><div class="ch-num">Chapter 01</div><div class="section-title">SEO 核心指標</div></div>
+      <div class="section-src">site-explorer-metrics · site-explorer-backlinks-stats · site-explorer-domain-rating</div>
+    </div>
+    <div class="metric-grid reveal">
+      <div class="metric-c"><span class="m-val">14</span><span class="m-lbl">Domain Rating</span><span class="m-src">domain-rating API</span></div>
+      <div class="metric-c alert"><span class="m-val" style="color:var(--red)">315</span><span class="m-lbl">月自然流量</span><span class="m-src">site-explorer-metrics</span></div>
+      <div class="metric-c"><span class="m-val">47</span><span class="m-lbl">自然關鍵字總數</span><span class="m-src">site-explorer-metrics</span></div>
+      <div class="metric-c good"><span class="m-val" style="color:var(--green)">14</span><span class="m-lbl">Top 1–3 排名詞</span><span class="m-src">site-explorer-metrics</span></div>
+      <div class="metric-c"><span class="m-val">521</span><span class="m-lbl">活躍外部連結</span><span class="m-src">backlinks-stats</span></div>
+      <div class="metric-c"><span class="m-val">120</span><span class="m-lbl">引用網域（活躍）</span><span class="m-src">backlinks-stats</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="trend" class="section">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <div><div class="ch-num">Chapter 02</div><div class="section-title">流量歷史趨勢 <span style="font-size:14px;font-weight:500;color:var(--red)">⚠ 銳減警示</span></div></div>
+      <div class="section-src">site-explorer-metrics-history · 2024-01 至 2026-05</div>
+    </div>
+    <div class="callout callout-red reveal"><strong>流量銳減警示：</strong>自然流量於 2025 年 8 月達峰值 <strong>1,032 次/月</strong>，2026 年 5 月降至 <strong>253 次/月</strong>，9 個月內下滑 <strong>75.5%</strong>。</div>
+    <div class="chart-container reveal"><canvas id="trafficChart" style="width:100%;height:200px"></canvas></div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>時間點</th><th>月均流量</th><th>變化幅度</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td>2024 年 1 月</td><td>114</td><td class="gray">基準起點</td><td>低基數階段</td></tr>
+          <tr><td>2025 年 8 月</td><td class="green">1,032</td><td class="green">+805%↑</td><td>歷史峰值</td></tr>
+          <tr><td>2025 年 12 月</td><td>957</td><td class="warn">−7%</td><td>短暫回穩後再次下滑</td></tr>
+          <tr><td>2026 年 2 月</td><td class="red">683</td><td class="red">−29%↓</td><td>急劇下滑開始</td></tr>
+          <tr><td>2026 年 5 月</td><td class="red">253</td><td class="red">−75.5%↓（vs 峰值）</td><td>健檢基準月（最新數據）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-gray reveal">建議對照 Google Search Console 數據，確認 2026 年 2 月起失去排名的具體頁面，釐清成因。</div>
+  </div>
+</section>
+
+<section id="keywords" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <div><div class="ch-num">Chapter 03</div><div class="section-title">關鍵字排名分析</div></div>
+      <div class="section-src">site-explorer-organic-keywords · 2026-06-13 · top 20</div>
+    </div>
+    <div class="callout callout-warn reveal"><strong>關鍵發現：</strong>「來令片」月搜尋量 2,300，ADUI 目前排名 #11（第二頁）。排名提升至 #1–3 可使流量增加 10–20 倍。全部 47 個關鍵字 KD 均為 0–2，流量結構極脆弱。</div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>關鍵字</th><th>語言</th><th>排名</th><th>月搜尋量</th><th>流量貢獻</th><th>KD</th></tr></thead>
+        <tbody>
+          <tr><td><strong>亞得利股份有限公司</strong></td><td><span class="b b-tw">繁中</span></td><td class="green">#1</td><td>60</td><td class="num">67</td><td>0</td></tr>
+          <tr><td><strong>亞得利</strong></td><td><span class="b b-tw">繁中</span></td><td class="green">#1</td><td>60</td><td class="num">67</td><td>0</td></tr>
+          <tr style="background:#FFFBEB"><td><strong>來令片</strong><span class="sub">全站搜尋量最高 — 提升排名空間最大</span></td><td><span class="b b-tw">繁中</span></td><td class="warn">#11</td><td><strong style="color:var(--green)">2,300</strong></td><td class="num">36</td><td>0</td></tr>
+          <tr><td>custom brake pads</td><td><span class="b b-en">英文</span></td><td class="green">#1</td><td>80</td><td class="num">29</td><td>0</td></tr>
+          <tr><td>nao brake pads</td><td><span class="b b-en">英文</span></td><td>#4</td><td>150</td><td class="num">19</td><td>0</td></tr>
+          <tr><td>surface grooves in brake pads indicate</td><td><span class="b b-en">英文</span></td><td>#5</td><td>150</td><td class="num">16</td><td>0</td></tr>
+          <tr><td>陶瓷煞車皮</td><td><span class="b b-tw">繁中</span></td><td class="green">#1</td><td>100</td><td class="num">9</td><td>0</td></tr>
+          <tr><td>汽車煞車有尖銳聲</td><td><span class="b b-tw">繁中</span></td><td class="warn">#11</td><td>350</td><td class="num">9</td><td>0</td></tr>
+          <tr><td>汽車煞車皮價格</td><td><span class="b b-tw">繁中</span></td><td class="warn">#11</td><td>350</td><td class="num">8</td><td>0</td></tr>
+          <tr><td>來令片價格</td><td><span class="b b-tw">繁中</span></td><td>#5</td><td>100</td><td class="num">9</td><td>0</td></tr>
+          <tr><td>碟盤生鏽</td><td><span class="b b-tw">繁中</span></td><td>#5</td><td>300</td><td class="num">3</td><td>0</td></tr>
+          <tr><td>brake pad guide</td><td><span class="b b-en">英文</span></td><td>#4</td><td>30</td><td class="num">4</td><td>2</td></tr>
+          <tr><td>機車來令片</td><td><span class="b b-tw">繁中</span></td><td>#10</td><td>150</td><td class="num">4</td><td>0</td></tr>
+          <tr><td>機車來令片推薦</td><td><span class="b b-tw">繁中</span></td><td>#10</td><td>60</td><td class="num">3</td><td>0</td></tr>
+          <tr><td>汽車來令片更換</td><td><span class="b b-tw">繁中</span></td><td>#5</td><td>30</td><td class="num">3</td><td>0</td></tr>
+          <tr><td>陶瓷來令片</td><td><span class="b b-tw">繁中</span></td><td class="green">#1</td><td>40</td><td class="num">4</td><td>0</td></tr>
+          <tr><td>汽車來令片</td><td><span class="b b-tw">繁中</span></td><td>#8</td><td>40</td><td class="num">2</td><td>0</td></tr>
+          <tr><td>汽車 煞車皮</td><td><span class="b b-tw">繁中</span></td><td>#7</td><td>30</td><td class="num">2</td><td>0</td></tr>
+          <tr><td>煞車皮 來令片</td><td><span class="b b-tw">繁中</span></td><td>#10</td><td>100</td><td class="num">3</td><td>0</td></tr>
+          <tr><td>來令片更換</td><td><span class="b b-tw">繁中</span></td><td>#6</td><td>50</td><td class="num">3</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-hd reveal" style="margin-top:40px">
+      <div><div class="ch-num">Chapter 04</div><div class="section-title">Top Pages 流量結構</div></div>
+      <div class="section-src">site-explorer-top-pages · 2026-06-13</div>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>頁面路徑</th><th>語言</th><th>月流量</th><th>最佳關鍵字</th><th>排名</th><th>搜尋量</th></tr></thead>
+        <tbody>
+          <tr><td>/zh-TW/ <span class="sub">繁中首頁</span></td><td><span class="b b-tw">繁中</span></td><td class="num">135</td><td>亞得利股份有限公司</td><td class="green">#1</td><td>60</td></tr>
+          <tr><td>/zh-TW/faq/Bicycle/evaluating-brake-pad-quality</td><td><span class="b b-tw">繁中</span></td><td class="num">46</td><td>來令片</td><td class="warn">#11</td><td>2,300</td></tr>
+          <tr><td>/product-overview</td><td><span class="b b-en">英文</span></td><td class="num">29</td><td>custom brake pads</td><td class="green">#1</td><td>80</td></tr>
+          <tr><td>/support/.../non-asbestos-organic-brake-pads</td><td><span class="b b-en">英文</span></td><td class="num">20</td><td>nao brake pads</td><td>#4</td><td>150</td></tr>
+          <tr><td>/zh-TW/support/陶瓷煞車來令片</td><td><span class="b b-tw">繁中</span></td><td class="num">17</td><td>陶瓷煞車皮</td><td class="green">#1</td><td>100</td></tr>
+          <tr><td>/faq/Automobile/purpose-of-the-grooves...</td><td><span class="b b-en">英文</span></td><td class="num">16</td><td>surface grooves in brake pads</td><td>#5</td><td>150</td></tr>
+          <tr style="background:#F0FDF4"><td colspan="6" style="font-size:11px;color:#16A34A;padding:8px 14px"><strong>語言分佈：</strong>繁中頁面 226 次（72%）· 英文頁面 71 次（23%）· 其他 18 次（5%）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ai" class="section">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <div><div class="ch-num">Chapter 05</div><div class="section-title">AI 引用現況</div></div>
+      <div class="section-src">Ahrefs 概述頁截圖 · 2026-05-18</div>
+    </div>
+    <div class="callout callout-gray reveal">所有數值標示「+N」代表新索引功能首次記錄，基準值為 0。</div>
+    <div class="ai-grid reveal">
+      <div class="ai-card"><span class="ai-num" style="color:var(--blue)">5</span><span class="ai-lbl">AI Overviews</span><span class="ai-pg">3 頁面</span></div>
+      <div class="ai-card"><span class="ai-num">5</span><span class="ai-lbl">AI 模式</span><span class="ai-pg">4 頁面</span></div>
+      <div class="ai-card top"><span class="ai-top-badge">最高</span><span class="ai-num" style="color:var(--green)">7</span><span class="ai-lbl">Grok</span><span class="ai-pg">5 頁面</span></div>
+      <div class="ai-card"><span class="ai-num">4</span><span class="ai-lbl">ChatGPT</span><span class="ai-pg">3 頁面</span></div>
+      <div class="ai-card"><span class="ai-num">3</span><span class="ai-lbl">Perplexity</span><span class="ai-pg">3 頁面</span></div>
+      <div class="ai-card"><span class="ai-num">1</span><span class="ai-lbl">Gemini</span><span class="ai-pg">1 頁面</span></div>
+      <div class="ai-card zero"><span class="ai-num" style="color:var(--red)">0</span><span class="ai-lbl">Copilot</span><span class="ai-pg">缺席</span></div>
+    </div>
+    <div class="callout callout-blue reveal" style="margin-top:16px">六平台合計 <strong>25 次引用</strong>。Grok 引用量最高（7 次），Copilot 完全缺席，是合作方案的優化目標之一。</div>
+    <div class="section-hd reveal" style="margin-top:40px">
+      <div><div class="ch-num">Chapter 06</div><div class="section-title">外鏈品質分析</div></div>
+      <div class="section-src">site-explorer-backlinks-stats<br>site-explorer-referring-domains</div>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead><tr><th>引用網域</th><th>DR</th><th>Dofollow</th><th>總連結</th><th>類型</th></tr></thead>
+        <tbody>
+          <tr><td>za.com</td><td>90</td><td class="gray">0</td><td>10</td><td class="gray">流量分析工具</td></tr>
+          <tr><td>1111.com.tw</td><td>80</td><td class="green">2</td><td>2</td><td>台灣人力資源</td></tr>
+          <tr><td><strong>metoree.com</strong></td><td>78</td><td class="green">10</td><td>10</td><td>B2B 製造商目錄</td></tr>
+          <tr><td>theblaze.com</td><td>78</td><td class="green">1</td><td>1</td><td>媒體</td></tr>
+          <tr><td>b2match.com</td><td>78</td><td class="green">1</td><td>2</td><td>B2B 媒合平台</td></tr>
+          <tr><td>grokipedia.com</td><td>77</td><td class="green">3</td><td>3</td><td>知識型網站</td></tr>
+          <tr><td>2ip.ru</td><td>75</td><td class="green">1</td><td>1</td><td>工具類</td></tr>
+          <tr style="background:#F0FDF4"><td colspan="5" style="font-size:11px;color:#16A34A;padding:8px 14px"><strong>DR60+ dofollow 合計：18 條</strong>（前 10 大引用網域 · DR 排序）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="competitors" class="section section-alt">
+  <div class="section-inner">
+    <div class="section-hd reveal">
+      <div><div class="ch-num">Chapter 07</div><div class="section-title">競品 SEO 差距對比</div></div>
+      <div class="section-src">site-explorer-metrics · domain-rating · 各獨立查詢</div>
+    </div>
+    <div class="callout callout-warn reveal"><strong>Galfer 悖論：</strong>Galfer DR 僅 9，低於 ADUI DR 14，但流量是 ADUI 的 30 倍（9,397 vs 315）。流量差距不是域名權威問題，而是關鍵字策略問題。</div>
+    <div class="comp-grid reveal">
+      <div class="comp-card"><div class="comp-domain">ebcbrakes.com</div><div class="comp-brand">EBC Brakes</div><div class="comp-dr">DR 67</div><span class="comp-traffic">36,192</span><span class="comp-ratio">115x ADUI</span></div>
+      <div class="comp-card"><div class="comp-domain">jagwire.com</div><div class="comp-brand">Jagwire</div><div class="comp-dr">DR 43</div><span class="comp-traffic">9,204</span><span class="comp-ratio">29x ADUI</span></div>
+      <div class="comp-card paradox"><div class="paradox-tag">DR 比 ADUI 低</div><div class="comp-domain">galfer.com</div><div class="comp-brand">Galfer</div><div class="comp-dr" style="background:#FEF3C7;color:#D97706">DR 9 ⬇</div><span class="comp-traffic">9,397</span><span class="comp-ratio">30x ADUI</span></div>
+      <div class="comp-card"><div class="comp-domain">swissstop.com</div><div class="comp-brand">SwissStop</div><div class="comp-dr">DR 31</div><span class="comp-traffic" style="color:var(--warn)">406</span><span class="comp-ratio neutral">1.3x ADUI</span></div>
+      <div class="comp-card highlight"><div class="comp-domain">aduibrake.com</div><div class="comp-brand" style="color:var(--blue)">ADUI（受檢）</div><div class="comp-dr" style="background:#DBEAFE;color:var(--blue)">DR 14</div><span class="comp-traffic me">315</span><span class="comp-ratio" style="color:var(--blue)">基準</span></div>
+    </div>
+    <div class="section-hd reveal" style="margin-top:40px">
+      <div><div class="ch-num">Chapter 08</div><div class="section-title">地理市場分析</div></div>
+      <div class="section-src">organic-keywords（country=TW/US）<br>+ Top Pages 語言分布</div>
+    </div>
+    <div class="geo-split reveal">
+      <div class="geo-card geo-tw"><span class="geo-pct">72%</span><span class="geo-name">台灣市場（繁體中文）</span><div class="geo-detail">Top Pages 繁中頁面合計：<strong>226 次/月</strong><br>主要來自台灣本地品牌搜尋（亞得利、來令片等）<br>country=TW 查詢確認</div></div>
+      <div class="geo-card geo-en"><span class="geo-pct">23%</span><span class="geo-name">英語市場（全球 / 美國為主）</span><div class="geo-detail">Top Pages 英文頁面合計：<strong>71 次/月</strong><br>以技術資訊型搜尋詞為主，採購型關鍵字缺席<br>country=US 查詢確認</div></div>
+    </div>
+    <div class="callout callout-warn reveal">ADUI 自述服務 25 個國家，但 72% 流量集中台灣本地中文搜尋，英語市場每月僅 71–89 次。</div>
+  </div>
+</section>
+
+<section id="proposal" class="section" style="background:var(--navy)">
+  <div class="section-inner">
+    <div class="section-hd reveal" style="border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px;margin-bottom:32px">
+      <div><div class="ch-num" style="color:var(--orange)">Chapter 09</div><div class="section-title" style="color:#fff">12 個月合作方案</div></div>
+      <div class="section-src" style="color:rgba(255,255,255,.4)">定價另行洽詢<br>Ahrefs 指標為唯一驗收基準</div>
+    </div>
+    <div class="pkg-grid reveal">
+      <div class="pkg-card">
+        <div class="pkg-tag">方案 A</div>
+        <div class="pkg-name">診斷修復</div>
+        <div class="pkg-desc">流量止血 · 技術基礎建置</div>
+        <div class="pkg-items">
+          <div class="pkg-item"><span>流量銳減診斷框架建立<span class="pkg-note">提供診斷方法論；待客戶提供 GSC 數據後執行具體分析</span></span></div>
+          <div class="pkg-item"><span>「來令片」排名提升計畫<span class="pkg-note">月搜 2,300，當前 #11 → 目標 #3–5</span></span></div>
+          <div class="pkg-item"><span>現有 Top 20 關鍵字排名鞏固</span></div>
+          <div class="pkg-item"><span>FAQPage / Organization Schema 技術建置</span></div>
+          <div class="pkg-item"><span>月度 Ahrefs 指標報告</span></div>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tag">方案 B</div>
+        <div class="pkg-name">市場拓展</div>
+        <div class="pkg-desc">英文市場建立 · 內容架構</div>
+        <div class="pkg-items">
+          <div class="pkg-item"><span>方案 A 全部服務</span></div>
+          <div class="pkg-item"><span>英文 Pillar 頁 × 2<span class="pkg-note">bike brake pads（月搜 2,500）· disc brake pads（1,500）</span></span></div>
+          <div class="pkg-item"><span>Cluster Blog 月產 2 篇<span class="pkg-note">英文，以 Ahrefs 確認搜尋量關鍵字優先</span></span></div>
+          <div class="pkg-item"><span>Pillar–Cluster 英文內鏈架構</span></div>
+          <div class="pkg-item"><span>季度 Ahrefs 數據複檢</span></div>
+        </div>
+      </div>
+      <div class="pkg-card rec">
+        <div class="pkg-rec-badge">推薦方案</div>
+        <div class="pkg-tag rec">方案 C</div>
+        <div class="pkg-name">品牌聲量建立</div>
+        <div class="pkg-desc">外部聲量 · AI 引用 · 完整驗收</div>
+        <div class="pkg-items">
+          <div class="pkg-item"><span>方案 B 全部服務</span></div>
+          <div class="pkg-item"><span>數位 PR 計畫<span class="pkg-note">媒體露出方案，含自行車產業媒體觸及</span></span></div>
+          <div class="pkg-item"><span>外鏈建置<span class="pkg-note">目標引用網域 120 → 180+（Ahrefs 可驗證）</span></span></div>
+          <div class="pkg-item"><span>Copilot AI 引用缺席補強</span></div>
+          <div class="pkg-item"><span>半年期中 Ahrefs 複檢 + 策略調整</span></div>
+          <div class="pkg-item"><span>期末 KPI 驗收報告</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px">
+      <div class="ch-num" style="color:var(--orange);margin-bottom:12px">執行路線圖（方案 C）</div>
+      <div class="roadmap reveal">
+        <div class="rm-step"><div class="rm-phase" style="background:var(--red)">M1–M2<br>診斷修復</div><div class="rm-body"><h4>流量銳減根因診斷 + SEO 技術底座</h4><p>GSC 比對找出失去排名頁面 · 「來令片」#11 提升計畫 · FAQPage / Organization Schema</p></div></div>
+        <div class="rm-step"><div class="rm-phase" style="background:var(--orange)">M3–M5<br>英文拓展</div><div class="rm-body"><h4>英文市場關鍵字佈局 + Pillar 頁</h4><p>Pillar 頁 × 2 · Cluster Blog 月產 2 篇 · bike brake pads（2,500/月）/ disc brake pads（1,500/月）</p></div></div>
+        <div class="rm-step"><div class="rm-phase" style="background:var(--blue)">M6–M8<br>品牌 PR</div><div class="rm-body"><h4>數位 PR + AI 引用強化</h4><p>數位 PR 計畫（含自行車產業媒體觸及）· Copilot AI 引用補強 · 期中 Ahrefs 複檢</p></div></div>
+        <div class="rm-step"><div class="rm-phase" style="background:var(--green)">M9–M12<br>鞏固驗收</div><div class="rm-body"><h4>規模化 + KPI 驗收</h4><p>Cluster Blog 持續月產 2 篇 · 第二波 PR · 期末 Ahrefs 完整指標比對</p></div></div>
+      </div>
+    </div>
+    <div style="margin-top:40px" class="reveal">
+      <div class="ch-num" style="color:var(--orange);margin-bottom:12px">12 個月 KPI 目標（Ahrefs 指標唯一驗收基準）</div>
+      <div style="border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.1)">
+        <table>
+          <thead><tr><th>Ahrefs 指標</th><th>M1 基線</th><th>M6 中期</th><th>M12 期末</th></tr></thead>
+          <tbody>
+            <tr><td>月自然流量</td><td class="red">315</td><td>600+</td><td class="green">1,500+</td></tr>
+            <tr><td>自然關鍵字</td><td class="red">47</td><td>120+</td><td class="green">300+</td></tr>
+            <tr><td>Top 1–3 關鍵字</td><td>14</td><td>30+</td><td class="green">60+</td></tr>
+            <tr><td>引用網域數</td><td>120</td><td>140+</td><td class="green">180+</td></tr>
+            <tr><td>AI 引用合計</td><td>25</td><td>50+</td><td class="green">100+</td></tr>
+            <tr><td>Domain Rating</td><td>14</td><td>18+</td><td class="green">25+</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-logo">PI</div>
+  <div><strong>普飛行銷公司 Perfect International</strong></div>
+  <div style="margin-top:6px">pufe.com.tw · 提案日期：2026 年 06 月 13 日 · 受檢網域：aduibrake.com</div>
+  <div style="margin-top:4px;font-size:11px;opacity:.5">本報告數據全部來自 Ahrefs API 直接查詢，版權歸普飛行銷公司所有，僅供 ADUI Brake 參考。</div>
+</footer>
+
+<script>
+// Counter
+function animateCount(el){
+  const t=parseInt(el.dataset.count);if(!t)return;
+  let s=0;const d=1200;
+  const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/d,1);const e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t).toLocaleString();if(p<1)requestAnimationFrame(step);};
+  requestAnimationFrame(step);
+}
+// Reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+window.addEventListener('load',()=>document.querySelectorAll('#hero [data-count]').forEach(animateCount));
+
+// Traffic Chart
+(function(){
+  const canvas=document.getElementById('trafficChart');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const dpr=window.devicePixelRatio||1;
+  const W=canvas.parentElement.offsetWidth-48;
+  const H=200;
+  canvas.width=W*dpr;canvas.height=H*dpr;
+  canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);
+  const labels=['24/01','24/04','24/06','24/08','24/10','24/12','25/03','25/06','25/08','25/10','25/12','26/02','26/03','26/04','26/05'];
+  const values=[114,248,437,500,434,641,885,1009,1032,874,957,683,450,398,253];
+  const pad={l:44,r:20,t:20,b:32};
+  const cW=W-pad.l-pad.r,cH=H-pad.t-pad.b;
+  const max=1100;
+  // Grid lines
+  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=1;
+  [0,250,500,750,1000].forEach(v=>{
+    const y=pad.t+cH*(1-v/max);
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cW,y);ctx.stroke();
+    ctx.fillStyle='#94A3B8';ctx.font='10px Inter,system-ui,sans-serif';ctx.textAlign='right';
+    ctx.fillText(v.toString(),pad.l-6,y+3.5);
+  });
+  // X labels
+  ctx.fillStyle='#94A3B8';ctx.textAlign='center';
+  labels.forEach((l,i)=>{if(i%3===0){const x=pad.l+(i/(labels.length-1))*cW;ctx.fillText(l,x,H-4);}});
+  const pts=values.map((v,i)=>({x:pad.l+(i/(labels.length-1))*cW,y:pad.t+cH*(1-v/max)}));
+  // Fill
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+cH);
+  grad.addColorStop(0,'rgba(16,185,129,.2)');grad.addColorStop(.5,'rgba(240,93,30,.12)');grad.addColorStop(1,'rgba(239,68,68,.04)');
+  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.forEach(p=>ctx.lineTo(p.x,p.y));
+  ctx.lineTo(pts[pts.length-1].x,pad.t+cH);ctx.lineTo(pts[0].x,pad.t+cH);ctx.closePath();
+  ctx.fillStyle=grad;ctx.fill();
+  // Line segments with color
+  pts.forEach((p,i)=>{
+    if(i===0)return;
+    ctx.beginPath();ctx.moveTo(pts[i-1].x,pts[i-1].y);ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle=values[i]<500?'#EF4444':values[i]<800?'#F97316':'#10B981';
+    ctx.lineWidth=2.5;ctx.stroke();
+  });
+  // Peak
+  const pk=pts[8];
+  ctx.beginPath();ctx.arc(pk.x,pk.y,5,0,Math.PI*2);ctx.fillStyle='#10B981';ctx.fill();
+  ctx.fillStyle='#0F2044';ctx.font='bold 11px Inter,system-ui,sans-serif';ctx.textAlign='center';
+  ctx.fillText('峰值 1,032',pk.x,pk.y-10);
+  // Current
+  const cur=pts[pts.length-1];
+  ctx.beginPath();ctx.arc(cur.x,cur.y,5,0,Math.PI*2);ctx.fillStyle='#EF4444';ctx.fill();
+  ctx.fillStyle='#EF4444';ctx.font='bold 11px Inter,system-ui,sans-serif';ctx.textAlign='right';
+  ctx.fillText('253',cur.x+4,cur.y-9);
+})();
+
+// Nav active
+const secs=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-80)cur=s.id;});
+  navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>
